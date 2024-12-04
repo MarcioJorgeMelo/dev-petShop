@@ -1,4 +1,3 @@
-import { BsCartPlus } from 'react-icons/bs'
 import { AiOutlineDown } from 'react-icons/ai'
 import { useState, useEffect, useContext } from 'react'
 
