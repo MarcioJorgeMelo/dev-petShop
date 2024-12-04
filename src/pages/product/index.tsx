@@ -49,8 +49,8 @@ export function Product() {
                                     currency: "BRL"
                                 })}
                             </strong>
-                            <button onClick={() => product && handleAddCartItem(product)} className='bg-yellow-300 rounded p-1 ml-2'>
-                                <BsCartPlus size={20} color='#121212' />
+                            <button onClick={() => product && handleAddCartItem(product)} className='bg-orange-main rounded p-1 ml-2'>
+                                <BsCartPlus size={24} color='#121212' />
                             </button>
                         </div>
                     </div>

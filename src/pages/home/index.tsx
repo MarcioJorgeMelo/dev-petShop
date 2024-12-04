@@ -1,4 +1,5 @@
 import { BsCartPlus } from 'react-icons/bs'
+import { AiOutlineDown } from 'react-icons/ai'
 import { useState, useEffect, useContext } from 'react'
 
 import { api } from '../../services/api'
@@ -34,32 +35,43 @@ export function Home() {
 
     return (
         <div>
-            <main className="w-full max-w-7xl px-4 mx-auto">
-                <h1 className="font-bold text-2xl mb-4 mt-10 text-center">Produtos em alta</h1>
+            <header className='w-full bg-white'>
+                <nav className='w-full max-w-6xl p-4 mx-auto flex items-center justify-start gap-4'>
+                    <div className='flex items-center justify-center gap-2 text-lg cursor-pointer hover:border-b-2 border-purple-800'>
+                        Em promoção
+                    </div>
 
-                <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5'>
+                    <div className='flex items-center justify-center gap-2 text-lg cursor-pointer hover:border-b-2 border-purple-800'>
+                        Cachorro
+                        <AiOutlineDown size={16} color='#000' />
+                    </div>
+                </nav>
+            </header>
+
+            <main className="w-full max-w-7xl px-4 mx-auto flex flex-col justify-start items-center gap-10 mt-10">
+                <h1 className="font-bold text-4xl text-purple-main">Produtos que seu pet vai amar!</h1>
+
+                <div className='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-5'>
                     {products.map((item, index) => (
-                        <section className="w-full" key={index}>
-                        <Link to={`product/${item.id}`}>
-                            <img
-                            src={item.cover}
-                            alt={item.description}
-                            className='w-full rounded-lg max-h-70 mb-2'
-                            />
-                        </Link>
-                        <p className='font-medium mt-1 mb-2'>{item.title} </p>
+                        <section className="w-full bg-white p-4 flex flex-col justify-center gap-2 rounded-3xl" key={index}>
+                            <Link to={`product/${item.id}`}>
+                                <img
+                                src={item.cover}
+                                alt={item.description}
+                                className='w-full rounded-lg max-h-70'
+                                />
+                            </Link>
+                            <p className='font-medium mt-1 mb-2'>{item.title}</p>
 
-                        <div className='flex gap-3 items-center'>
-                            <strong className='text-zinc-700/90'>
-                            {item.price.toLocaleString("pt-BR", {
-                                style: "currency",
-                                currency: "BRL"
-                            })} 
+                            <strong className='text-purple-main'>
+                                {item.price.toLocaleString("pt-BR", {
+                                    style: "currency",
+                                    currency: "BRL"
+                                })} 
                             </strong>
-                            <button className='bg-yellow-300 p-1 rounded' onClick={() => handleAddCartItem(item)}>
-                                <BsCartPlus size={20} color='#000'/>
+                            <button className='bg-orange-100 p-1 flex items-center justify-center h-12 text-orange-main font-bold rounded-xl' onClick={() => handleAddCartItem(item)}>
+                                Adicionar
                             </button>
-                        </div>
                     </section>
                     ))}
                 </div>
